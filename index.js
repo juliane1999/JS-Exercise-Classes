@@ -51,7 +51,7 @@ class Airplane {
    eat(someFood){
     if(this.stomach.length <= 10){
       return this.stomach.push(someFood);
-     }
+    }
    }
 
 
@@ -91,7 +91,7 @@ class Airplane {
     this.tank += gallons;
    }
    drive(distance){
-    this. odometer = distance;
+    this. odometer += distance;
     this.tank = this.tank - (distance / this.milesPerGallon);
     if(this.tank < (distance / this.milesPerGallon)){
       this.tank = 0;
@@ -177,11 +177,11 @@ class Airplane {
    listSubjects(){
      return this.favSubjects;
    }
-   PRAssignment(student,subject){
-     return `${student.name} has submitted a PR for ${subject}`;
+   PRAssignment(subject){
+     return `${this.name} has submitted a PR for ${subject}`;
    }
-   sprintChallenge(student,subject,){
-     return `${student.name} has begun sprint challenge on ${subject}`;
+   sprintChallenge(subject,){
+     return `${this.name} has begun sprint challenge on ${subject}`;
    }
      
  }
@@ -207,11 +207,11 @@ class Airplane {
    }
 
   
-   standUp(channel,name){
-     return `${name} announces to ${channel}, @channel standy times!`;
+   standUp(channel){
+     return `${this.name} announces to ${channel}, @channel standy times!`;
    }
-   debugsCode(student,subject,name){
-     return `${name} debugs ${student.name}'s code on ${subject}`;
+   debugsCode(student,subject){
+     return `${this.name} debugs ${student.name}'s code on ${subject}`;
    }
      
  }
