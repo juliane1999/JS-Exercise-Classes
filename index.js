@@ -42,8 +42,28 @@ class Airplane {
   */
   
  class Person {
+   constructor(name,age){
+     this.name = name;
+     this.age = age;
+     this.stomach = [];
+   }
+   eat(someFood){
+     if(this.stomach.length <= 10){
+      return this.stomach.push(someFood);
+     }
+   }
+
+
+   poop(){
+     return this.stomach = [];
+
+   }
+   toString(){
+    return `${this.name}, ${this.age}`;
+   }
+ }
     
-  }
+  
   
   /*
     TASK 2
@@ -60,7 +80,18 @@ class Airplane {
   */
   
  class Car {
-    
+   constructor(model,milesperGallon){
+     this.model = model;
+     this.milesperGallon = milesperGallon;
+     this.tank = 0;
+     this.odometer = 0;
+   }
+   fill(gallons){
+     return this.tank += gallons;
+   }
+   drive(distance){
+     return odometer += distance, this.tank -= this.milesperGallon;
+   }
   }
   
   /*
@@ -76,7 +107,14 @@ class Airplane {
           + {name} and {location} of course come from the instance's own properties.
   */
  class Lambdasian {
-    
+   constructor(attributes){
+     this.name = attributes.name;
+     this.age = attributes.age;
+     this.location = attributes.location;
+   }
+   speak(){
+     return `Hello my name is ${this.name}, I am from ${this.location}.`;
+   }
   }
   
   /*
@@ -90,10 +128,22 @@ class Airplane {
       - The constructor calls the parent constructor passing it what it needs.
       - The constructor should also initialize `specialty`, `favLanguage` and `catchPhrase` properties on the instance.
       - Instructor instances have the following methods:
-          + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
-          + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
+          + `demo` receives a `subject` string as an argument and returns the phrase  where subject is the param passed in.
+          + `grade` receives a `student` object and a `subject` string as arguments and returns
   */
- class Instructor {
+ class Instructor extends Lambdasian{
+   constructor(attributes){
+     super(attributes);
+     this.specialty = attributes.specialty;
+     this.favLanguage = attributes.favLanguage;
+     this.catchPhrase = attributes.catchPhrase;
+   }
+   demo(subject){
+     return `Today we are learning about ${subject}`;
+   }
+   grade(student,subject){
+     return `${student.name} receives a perfect score on ${subject}`;
+   }
 
  }
   /*
@@ -111,7 +161,22 @@ class Airplane {
           + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
           + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
   */
- class Student {
+ class Student extends Lambdasian{
+   constructor(attributes){
+     super(attributes);
+     this.previousBackground = attributes.previousBackground;
+     this.className = attributes.className;
+     this.favSubjects = attributes.favSubjects;
+   }
+   listSubjects(){
+     return this.favSubjects;
+   }
+   PRAssignment(subject){
+     return `${student.name} has submitted a PR for ${subject}`;
+   }
+   sprintChallenge(subject){
+     return `${student.name} has begun sprint challenge on ${subject}`;
+   }
      
  }
   
@@ -128,7 +193,18 @@ class Airplane {
           + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
           + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
   */
- class ProjectManager {
+ class ProjectManager extends Instructor{
+   constructor(attributes){
+     super(attributes);
+     this.gradClassName = attributes.gradClassName;
+     this.favInstructor = attributes.favInstructor;
+   }
+   standUp(channel){
+     return `${name} announces to ${channel}, @channel standy times!`;
+   }
+   debugsCode(student,subject){
+     return `${name} debugs ${student.name}'s code on ${subject}`;
+   }
      
  }
   /*
