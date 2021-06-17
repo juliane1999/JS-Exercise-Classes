@@ -47,8 +47,9 @@ class Airplane {
      this.age = age;
      this.stomach = [];
    }
+
    eat(someFood){
-     if(this.stomach.length <= 10){
+    if(this.stomach.length <= 10){
       return this.stomach.push(someFood);
      }
    }
@@ -80,18 +81,23 @@ class Airplane {
   */
   
  class Car {
-   constructor(model,milesperGallon){
+   constructor(model,milesPerGallon){
      this.model = model;
-     this.milesperGallon = milesperGallon;
+     this.milesPerGallon = milesPerGallon;
      this.tank = 0;
      this.odometer = 0;
    }
    fill(gallons){
-     return this.tank += gallons;
+    this.tank += gallons;
    }
    drive(distance){
-     return odometer += distance, this.tank -= this.milesperGallon;
-   }
+    this. odometer = distance;
+    this.tank = this.tank - (distance / this.milesPerGallon);
+    if(this.tank < (distance / this.milesPerGallon)){
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+   } 
   }
   
   /*
@@ -162,7 +168,7 @@ class Airplane {
           + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
   */
  class Student extends Lambdasian{
-   constructor(attributes){
+   constructor(attributes,){
      super(attributes);
      this.previousBackground = attributes.previousBackground;
      this.className = attributes.className;
@@ -171,10 +177,10 @@ class Airplane {
    listSubjects(){
      return this.favSubjects;
    }
-   PRAssignment(subject){
+   PRAssignment(student,subject){
      return `${student.name} has submitted a PR for ${subject}`;
    }
-   sprintChallenge(subject){
+   sprintChallenge(student,subject,){
      return `${student.name} has begun sprint challenge on ${subject}`;
    }
      
@@ -199,10 +205,12 @@ class Airplane {
      this.gradClassName = attributes.gradClassName;
      this.favInstructor = attributes.favInstructor;
    }
-   standUp(channel){
+
+  
+   standUp(channel,name){
      return `${name} announces to ${channel}, @channel standy times!`;
    }
-   debugsCode(student,subject){
+   debugsCode(student,subject,name){
      return `${name} debugs ${student.name}'s code on ${subject}`;
    }
      
